@@ -1,0 +1,50 @@
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  border: 2px solid var(--pink);
+  border-radius: 0.5em;
+  display: block;
+  padding: 1em;
+  padding-top: 0;
+  margin-bottom: 1em;
+}
+
+li header {
+  color: var(--gray);
+  font-size: 0.8em;
+  margin-bottom: 1em;
+}
+
+.blockNumber:before {
+  content: 'block #';
+}
+
+.blockNumber {
+  margin-right: 1em;
+}
+
+.dateMined:before {
+  content: 'created ';
+}
+
+button {
+  background: none;
+  border: none;
+  color: var(--teal);
+  cursor: pointer;
+  padding: none;
+  margin: none;
+}
+
+button:hover, button:focus {
+  outline: none;
+  color: var(--yellow);
+}
+
+button:active {
+  color: var(--red);
+}

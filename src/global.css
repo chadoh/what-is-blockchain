@@ -35,3 +35,8 @@ h1 small {
     -16px 16px 0 var(--pink)
   ;
 }
+
+button {
+  color: inherit;
+  font: inherit;
+}

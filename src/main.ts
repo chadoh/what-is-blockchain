@@ -1,10 +1,9 @@
 import exampleData from "./exampleData"
+import render from "./renderBlocks"
 
 (() => {
-  console.log(exampleData)
-
   const example = document.getElementById("example");
   if (!example) return
 
-  example.innerHTML = JSON.stringify(exampleData);
+  example.innerHTML = render(exampleData)
 })();
