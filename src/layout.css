@@ -1,0 +1,38 @@
+h1 {
+  grid-area: header;
+}
+
+#description {
+  grid-area: intro;
+}
+
+#example {
+  grid-area: example;
+}
+
+body {
+  display: grid;
+  grid-row-gap: 1em;
+  grid-column-gap: 1em;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header  header"
+    "intro   intro"
+    "example example"
+  ;
+}
+
+@media(min-width: 700px) {
+  #description {
+    transform: skewY(-6deg);
+    font-style: italic;
+  }
+
+  body {
+    grid-template-areas:
+      "header example"
+      "intro  example"
+    ;
+  }
+}

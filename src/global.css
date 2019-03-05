@@ -6,6 +6,7 @@ html {
 
 body {
   margin: 0 auto;
+  max-width: 40em;
   padding: 1em;
   --pink: #e7747b;
   --red: #b34b40;
