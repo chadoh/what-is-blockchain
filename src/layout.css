@@ -24,12 +24,40 @@ body {
 }
 
 @media(min-width: 700px) {
-  #description {
-    transform: skewY(-6deg);
-    font-style: italic;
+  #description * {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  #description p {
+    background: var(--blue);
+    transform: rotateY(30deg) scaleX(1.06) translateZ(0.75em);
+    padding: 0.25em;
+    position: relative;
+  }
+
+  #description p:before {
+    background-color: var(--teal);
+    content: ' ';
+    filter: brightness(.7);
+    height: 1.5em;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    transform: rotateX(90deg) translateZ(0.75em) translateY(-0.75em);
+  }
+
+  #description p:after {
+    background-color: var(--teal);
+    content: ' ';
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    transform: rotateY(-90deg) translateZ(0.75em) translateX(-0.75em);
+    width: 1.5em;
   }
 
   body {
+    perspective: 800em;
+    perspective-origin: 100% -200%;
     grid-template-areas:
       "header example"
       "intro  example"
