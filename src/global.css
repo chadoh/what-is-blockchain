@@ -8,6 +8,8 @@ body {
   margin: 0 auto;
   max-width: 40em;
   padding: 1em;
+  perspective: 1000em;
+  perspective-origin: 100% -200%;
   --pink: #e7747b;
   --red: #b34b40;
   --blue: #a1c9c2;
@@ -23,12 +25,55 @@ body * {
 
 h1 {
   font-weight: normal;
+  transform: rotateY(30deg);
 }
 
 h1 small {
   display: block;
   font-size: 0.6em;
   line-height: 0.5;
+}
+
+.shout {
+  text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+}
+
+.shout *:nth-child(n + 1) {
+  position: absolute;
+  top: 0; left: 0;
+}
+
+.shout *:nth-child(2) { transform: translateZ(-0.2em); color: var(--red) }
+.shout *:nth-child(3) { transform: translateZ(-0.4em); color: var(--yellow) }
+.shout *:nth-child(4) { transform: translateZ(-0.6em); color: var(--teal) }
+.shout *:nth-child(5) { transform: translateZ(-0.8em); color: var(--pink) }
+
+#description p {
+  background: var(--blue);
+  transform: rotateY(30deg) scaleX(1.06) translateZ(0.75em);
+  padding: 0.25em;
+  position: relative;
+}
+
+#description p:before {
+  background-color: var(--teal);
+  content: ' ';
+  filter: brightness(.7);
+  height: 1.5em;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  transform: rotateX(90deg) translateZ(0.75em) translateY(-0.75em);
+}
+
+#description p:after {
+  background-color: var(--teal);
+  content: ' ';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  transform: rotateY(-90deg) translateZ(0.75em) translateX(-0.75em);
+  width: 1.5em;
 }
 
 button {
