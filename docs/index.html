@@ -3,8 +3,8 @@
 },{}],"4u/5":[function(require,module,exports) {
 
 },{}],"xv+g":[function(require,module,exports) {
-"use strict";exports.__esModule=!0,require("./blocks.css"),exports.default=function(t){return"<ol>"+t.map(function(t){return'<li><header><span class="blockNumber">'+parseInt(t.number,16)+'</span> <span class="dateMined">'+new Date(1e3*parseInt(t.timestamp)).toLocaleString()+'</span></header><button class="transactionCount">'+t.transactions.length+" transactions</button></li>"}).join("")+"</ol>"};
+"use strict";exports.__esModule=!0,require("./blocks.css"),exports.default=function(n){return"<ol>"+n.map(function(n){return'\n    <li>\n      <header>\n        <span class="blockNumber">'+parseInt(n.number,16)+'</span>\n        <span class="dateMined">'+new Date(1e3*parseInt(n.timestamp)).toLocaleString()+'</span>\n      </header>\n      <button class="transactionCount">'+n.transactions.length+" transactions</button>\n    </li>\n  "}).join("")+"</ol>"};
 },{"./blocks.css":"4u/5"}],"ZCfc":[function(require,module,exports) {
 "use strict";var e=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}};exports.__esModule=!0;var t=e(require("./exampleData")),r=e(require("./renderBlocks"));!function(){var e=document.getElementById("example");e&&(e.innerHTML=r.default(t.default))}();
 },{"./exampleData":"gwpt","./renderBlocks":"xv+g"}]},{},["ZCfc"], null)
-//# sourceMappingURL=/main.ef790af3.map</script> </body> </html>
+//# sourceMappingURL=/main.d2b01bda.map</script> </body> </html>
