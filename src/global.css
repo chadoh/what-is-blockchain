@@ -16,6 +16,11 @@ body {
   --gray: #bbb;
 }
 
+body * {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
 h1 {
   font-weight: normal;
 }
@@ -24,18 +29,6 @@ h1 small {
   display: block;
   font-size: 0.6em;
   line-height: 0.5;
-}
-
-.standout {
-  text-transform: uppercase;
-  font-weight: bold;
-  color: var(--gray);
-  text-shadow:
-    -4px 4px 0 var(--red),
-    -8px 8px 0 var(--yellow),
-    -12px 12px 0 var(--teal),
-    -16px 16px 0 var(--pink)
-  ;
 }
 
 button {
