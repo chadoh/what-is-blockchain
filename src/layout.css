@@ -1,4 +1,4 @@
-h1 {
+#title {
   grid-area: header;
 }
 
@@ -6,37 +6,31 @@ h1 {
   grid-area: intro;
 }
 
-#example {
-  grid-area: example;
+#demo {
+  grid-area: demo;
 }
 
 body {
   display: grid;
-  grid-row-gap: 1em;
+  align-items: start;
   grid-column-gap: 1em;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto;
+  grid-template-rows: max-content;
   grid-template-areas:
-    "header  header"
-    "intro   intro"
-    "example example"
+    "header header"
+    "intro  intro"
+    "demo   demo"
   ;
 }
 
 @media(min-width: 550px) {
-  body {
-    grid-template-areas:
-      "header ."
-      "intro  example"
-    ;
+  #demo {
+    transform: rotateY(-30deg) scaleX(1.1) translateZ(1em);
   }
-}
-
-@media(min-width: 870px) {
   body {
     grid-template-areas:
-      "header example"
-      "intro  example"
+      "header demo"
+      "intro  demo"
     ;
   }
 }

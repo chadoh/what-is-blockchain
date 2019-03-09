@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 html {
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
   font-size: calc(.85em + 1vw);
@@ -20,11 +23,13 @@ body {
 
 body * {
   transform-style: preserve-3d;
-  backface-visibility: hidden;
 }
 
 h1 {
   font-weight: normal;
+}
+
+#title {
   transform: rotateY(30deg);
 }
 
@@ -34,13 +39,39 @@ h1 small {
   line-height: 0.5;
 }
 
-.shout {
-  text-transform: uppercase;
-  font-weight: bold;
+p {
+  margin-top: 0;
+  background: var(--blue);
+  padding: 0.25em;
   position: relative;
 }
 
-.shout *:nth-child(n + 1) {
+p:before {
+  background-color: var(--teal);
+  content: ' ';
+  height: 1.5em;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  transform: rotateX(90deg) translateZ(0.75em) translateY(-0.75em);
+}
+
+p:after {
+  background-color: var(--teal);
+  content: ' ';
+  filter: brightness(.8);
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 1.5em;
+}
+
+.shout {
+  display: inline-block;
+  font-weight: bold;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.shout *:nth-child(n+2) {
   position: absolute;
   top: 0; left: 0;
 }
@@ -50,33 +81,34 @@ h1 small {
 .shout *:nth-child(4) { transform: translateZ(-0.6em); color: var(--teal) }
 .shout *:nth-child(5) { transform: translateZ(-0.8em); color: var(--pink) }
 
-#description p {
-  background: var(--blue);
-  transform: rotateY(30deg) scaleX(1.06) translateZ(0.75em);
-  padding: 0.25em;
-  position: relative;
+[aria-hidden="true"] {
+  pointer-events: none;
+  user-select: none;
 }
 
-#description p:before {
-  background-color: var(--teal);
-  content: ' ';
-  filter: brightness(.7);
-  height: 1.5em;
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  transform: rotateX(90deg) translateZ(0.75em) translateY(-0.75em);
+#description {
+  transform: rotateY(30deg) scaleX(1.06) translateZ(0.75em);
 }
 
 #description p:after {
-  background-color: var(--teal);
-  content: ' ';
-  position: absolute;
-  top: 0; bottom: 0; left: 0;
   transform: rotateY(-90deg) translateZ(0.75em) translateX(-0.75em);
-  width: 1.5em;
+  left: 0;
+}
+
+#demo {
+  transform: rotateY(-30deg) scaleX(1.1) translateZ(1em);
+}
+
+#demo p:after {
+  transform: rotateY(90deg) translateZ(0.75em) translateX(0.75em);
+  right: 0;
 }
 
 button {
   color: inherit;
   font: inherit;
+}
+
+#demo h1 {
+  text-align: right;
 }
