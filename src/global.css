@@ -112,3 +112,22 @@ button {
 #demo h1 {
   text-align: right;
 }
+
+a, button {
+  background: none;
+  border: none;
+  color: var(--red);
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  text-decoration: underline;
+}
+
+a:hover, button:hover, a:focus, button:focus {
+  outline: none;
+  color: var(--pink);
+}
+
+a:active, button:active {
+  color: var(--yellow);
+}
