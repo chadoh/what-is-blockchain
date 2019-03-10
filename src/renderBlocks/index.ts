@@ -13,7 +13,7 @@ document.addEventListener("click", e => {
 })
 
 const openBlock = (block: HTMLElement): void => {
-  // 1. duplicate the element, add to bottom of DOM, fix position above old element
+  // 1. duplicate the element, position above old element
   const clone = block.cloneNode(true) as HTMLElement
   const rect = block.getBoundingClientRect()
   let styles = `
@@ -34,12 +34,15 @@ const openBlock = (block: HTMLElement): void => {
   clone.dataset.width = clone.style.width
   clone.dataset.height = clone.style.height
 
-  document.getElementById("opened-block").appendChild(clone)
+  // 2. add to #opened-block, activate #opened-block
+  const container = document.getElementById("opened-block")
+  container.className = "active"
+  container.appendChild(clone)
 
-  // 2. set visibility=hidden using class which can be removed when closing
+  // 3. set visibility=hidden using class which can be removed when closing
   block.className = block.className + " opened"
 
-  // 3. make full screen
+  // 4. make full screen
   setTimeout(() => {
     styles = `
       top: 1em;
@@ -52,7 +55,7 @@ const openBlock = (block: HTMLElement): void => {
 
     // TODO: remove me!
     setTimeout(() => closeBlock(clone), 2000)
-  })
+  }, 50)
 }
 
 const closeBlock = function(clone: HTMLElement): void {
@@ -69,22 +72,16 @@ const closeBlock = function(clone: HTMLElement): void {
 
   // 2. wait for animation to complete
   setTimeout(() => {
-    // 3. remove fixed styling
-    styles = `
-      position: static;
-      top: auto;
-      left: auto;
-      width: auto;
-      height: auto;
-    `
-    clone.style.cssText = clone.style.cssText + ";" + styles
-
-    // 4. make original block visible again
+    // 3. make original block visible again
     const block = document.querySelector(".block.opened")
     block.className = block.className.replace(/ opened/, "")
 
-    // 5. remove placeholder
+    // 4. remove placeholder
     clone.remove()
+
+    // 5. deactivate #opened-block
+    const container = document.getElementById("opened-block")
+    container.className = ""
   }, animationLength * 1000)
 };
 
