@@ -8,11 +8,7 @@ html {
 }
 
 body {
-  margin: 0 auto;
-  max-width: 40em;
   padding: 1em;
-  perspective: 1000em;
-  perspective-origin: 100% -200%;
   --pink: #e7747b;
   --red: #b34b40;
   --blue: #a1c9c2;
@@ -23,6 +19,28 @@ body {
 
 body * {
   transform-style: preserve-3d;
+}
+
+#scene {
+  margin: 0 auto;
+  max-width: 40em;
+  perspective: 1000em;
+  perspective-origin: 100% -200%;
+}
+
+#opened-block {
+  height: 100vh; width: 100vw;
+  perspective: 1000em;
+  pointer-events: none;
+  position: fixed;
+  top: 0; left: 0;
+
+  transform: translateZ(10em); /* prevents overlap in Safari */
+
+  /* different from #scene in a hacky attempt to have the perspective look the
+   * same, despite #scene's greater height
+   */
+  perspective-origin: 100% -700%;
 }
 
 h1 {

@@ -10,7 +10,7 @@
   grid-area: demo;
 }
 
-body {
+#scene {
   display: grid;
   align-items: start;
   grid-column-gap: 1em;
@@ -24,7 +24,7 @@ body {
 }
 
 @media(min-width: 550px) {
-  body {
+  #scene {
     grid-template-areas:
       "header demo"
       "intro  demo"

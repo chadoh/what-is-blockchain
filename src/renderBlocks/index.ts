@@ -17,13 +17,14 @@ const openBlock = (block: HTMLElement): void => {
   const clone = block.cloneNode(true) as HTMLElement
   const rect = block.getBoundingClientRect()
   let styles = `
-    position: fixed;
-    top: calc(${rect.top + window.scrollY}px + 1em);
-    left: calc(${rect.left}px - 1.1em);
+    position: absolute;
+    top: calc(${rect.top}px + 1em);
+    left: calc(${rect.left}px - 0.35em);
     width: ${block.offsetWidth}px;
     height: ${block.offsetHeight}px;
-    transform: rotateY(-30deg) scaleX(1.1) translateZ(1em);
-    transition: all ${animationLength}s;
+    transform: perspective(1000em) rotateY(-30deg) scaleX(1.1) translateZ(1em);
+    transition: all ${animationLength}s linear;
+    z-index: 1;
   `
   clone.style.cssText = clone.style.cssText + ";" + styles
 
@@ -33,24 +34,25 @@ const openBlock = (block: HTMLElement): void => {
   clone.dataset.width = clone.style.width
   clone.dataset.height = clone.style.height
 
-  document.body.appendChild(clone)
+  document.getElementById("opened-block").appendChild(clone)
 
   // 2. set visibility=hidden using class which can be removed when closing
   block.className = block.className + " opened"
 
   // 3. make full screen
-  styles = `
-    position: fixed;
-    top: calc(${window.scrollY}px + 1em);
-    left: 1em;
-    width: calc(100% - 2em);
-    height: calc(100vh - 3em);
-    transform: perspective(40em) rotateY(-180deg);
-  `
-  clone.style.cssText = clone.style.cssText + ";" + styles
+  setTimeout(() => {
+    styles = `
+      top: 1em;
+      left: 1em;
+      width: calc(100% - 2em);
+      height: calc(100vh - 3em);
+      transform: perspective(40em) rotateY(-180deg);
+    `
+    clone.style.cssText = clone.style.cssText + ";" + styles
 
-  // TODO: remove me!
-  setTimeout(() => closeBlock(clone), 2000)
+    // TODO: remove me!
+    setTimeout(() => closeBlock(clone), 2000)
+  })
 }
 
 const closeBlock = function(clone: HTMLElement): void {
