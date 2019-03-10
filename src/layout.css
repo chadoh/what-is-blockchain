@@ -15,7 +15,7 @@
   align-items: start;
   grid-column-gap: 1em;
   grid-template-columns: 1fr 2fr;
-  grid-template-rows: max-content;
+  grid-template-rows: max-content 1fr;
   grid-template-areas:
     "header header"
     "intro  intro"
