@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  font-size: calc(.85em + 1vw);
+  line-height: 1.3;
+}
+
+body {
+  --pink: #e7747b;
+  --red: #b34b40;
+  --blue: #a1c9c2;
+  --yellow: #e6bb5b;
+  --teal: #1b8492;
+  --gray: #bbb;
+
+  padding: 1em;
+
+  * {
+    transform-style: preserve-3d;
+  }
+}
+
+#scene {
+  display: grid;
+  align-items: start;
+  grid-column-gap: 1em;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: max-content 1fr;
+  grid-template-areas:
+    "header header"
+    "intro  intro"
+    "demo   demo"
+  ;
+
+  margin: 0 auto;
+  max-width: 40em;
+
+  perspective: 1000em;
+  perspective-origin: 100% -200%;
+
+  // fixes bug in firefox that causes pointer events to be swallowed by parent
+  pointer-events: none;
+  * { pointer-events: auto; }
+
+  @media(min-width: 550px) {
+    grid-template-areas:
+      "header demo"
+      "intro  demo"
+    ;
+  }
+}
+
+#opened-block {
+  height: 100vh; width: 100vw;
+  position: fixed;
+  top: 0; left: 0;
+  perspective: 1000em;
+
+  transform: translateZ(10em); /* prevents overlap in Safari */
+
+  /* different from #scene in a hacky attempt to have the perspective look the
+   * same, despite #scene's greater height
+   */
+  perspective-origin: 100% -700%;
+
+  display: none;
+  &.active { display: block; }
+}
+
+h1 {
+  font-weight: normal;
+  small {
+    display: block;
+    font-size: 0.6em;
+    line-height: 0.5;
+  }
+}
+
+#title {
+  grid-area: header;
+  transform: rotateY(30deg);
+}
+
+p {
+  margin-top: 0;
+  background: var(--blue);
+  padding: 0.25em;
+  position: relative;
+
+  // top
+  &:before {
+    background-color: var(--teal);
+    content: ' ';
+    height: 1.5em;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    transform: rotateX(90deg) translateZ(0.75em) translateY(-0.75em);
+  }
+
+  // side
+  &:after {
+    background-color: var(--teal);
+    content: ' ';
+    filter: brightness(.8);
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 1.5em;
+  }
+
+}
+
+.shout {
+  display: inline-block;
+  font-weight: bold;
+  position: relative;
+  text-transform: uppercase;
+
+  *:nth-child(n+2) {
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  *:nth-child(2) { transform: translateZ(-0.2em); color: var(--red) }
+  *:nth-child(3) { transform: translateZ(-0.4em); color: var(--yellow) }
+  *:nth-child(4) { transform: translateZ(-0.6em); color: var(--teal) }
+  *:nth-child(5) { transform: translateZ(-0.8em); color: var(--pink) }
+}
+
+[aria-hidden="true"] {
+  pointer-events: none;
+  user-select: none;
+}
+
+#description {
+  grid-area: intro;
+  transform: rotateY(30deg) scaleX(1.06) translateZ(0.75em);
+
+  // side
+  p:after {
+    transform: rotateY(-90deg) translateZ(0.75em) translateX(-0.75em);
+    left: 0;
+  }
+}
+
+#demo {
+  grid-area: demo;
+  transform: rotateY(-30deg) scaleX(1.1) translateZ(1em);
+
+  p:after {
+    transform: rotateY(90deg) translateZ(0.75em) translateX(0.75em);
+    right: 0;
+  }
+
+  h1 {
+    text-align: right;
+  }
+}
+
+a {
+  color: var(--red);
+
+  &:hover, &:focus {
+    color: var(--pink);
+  }
+
+  &:active {
+    color: var(--yellow);
+  }
+}

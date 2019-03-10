@@ -1,4 +1,4 @@
-import "./blocks.css"
+import "./blocks.scss"
 import { openBlock, closeBlock } from "./animations"
 
 document.addEventListener("click", e => {
