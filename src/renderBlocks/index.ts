@@ -2,7 +2,7 @@ import "./blocks.css"
 import renderShape from "./renderShape"
 import cloneNode from "./cloneNode"
 
-const animationLength = 0.5
+const animationLength = 350
 
 document.addEventListener("click", e => {
   const target = e.target as HTMLElement
@@ -23,7 +23,7 @@ const openBlock = (block: HTMLElement): void => {
     width: ${block.offsetWidth}px;
     height: ${block.offsetHeight}px;
     transform: perspective(1000em) rotateY(-30deg) scaleX(1.1) translateZ(1em);
-    transition: all ${animationLength}s linear;
+    transition: all ${animationLength}ms linear;
     z-index: 1;
   `
   clone.style.cssText = clone.style.cssText + ";" + styles
@@ -82,7 +82,7 @@ const closeBlock = function(clone: HTMLElement): void {
     // 5. deactivate #opened-block
     const container = document.getElementById("opened-block")
     container.className = ""
-  }, animationLength * 1000)
+  }, animationLength)
 };
 
 export default blocks => blocks.map(block => {
