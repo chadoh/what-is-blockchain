@@ -24,9 +24,6 @@ body {
 }
 
 @media(min-width: 550px) {
-  #demo {
-    transform: rotateY(-30deg) scaleX(1.1) translateZ(1em);
-  }
   body {
     grid-template-areas:
       "header demo"

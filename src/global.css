@@ -104,30 +104,26 @@ p:after {
   right: 0;
 }
 
-button {
-  color: inherit;
-  font: inherit;
-}
-
 #demo h1 {
   text-align: right;
 }
 
-a, button {
+a {
   background: none;
   border: none;
   color: var(--red);
   cursor: pointer;
+  font: inherit;
   padding: 0;
   margin: 0;
   text-decoration: underline;
 }
 
-a:hover, button:hover, a:focus, button:focus {
+a:hover, a:focus {
   outline: none;
   color: var(--pink);
 }
 
-a:active, button:active {
+a:active {
   color: var(--yellow);
 }
