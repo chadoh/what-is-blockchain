@@ -30,5 +30,8 @@
       "js"
     ],
     "testRegex": "^.+\\.test\\.ts$"
+  },
+  "dependencies": {
+    "blockies-identicon": "^0.1.0"
   }
 }

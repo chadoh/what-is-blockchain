@@ -70,6 +70,7 @@
     width: calc(100vw - 2em);
     #opened-block & {
       width: 100%;
+      padding-bottom: 1em;
     }
   }
 
@@ -77,10 +78,60 @@
     display: grid;
     grid-column-gap: 0.5em;
     grid-row-gap: 0.5em;
-    grid-template-columns: repeat(auto-fill, minmax(7em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));
   }
 
   .transaction {
+    .sender { grid-area: sender }
+    .sent { grid-area: sent }
+    .amount { grid-area: amount }
+    .to { grid-area: to }
+    .receiver { grid-area: receiver }
+
     overflow: hidden;
+    border: 1px solid var(--teal);
+    border-radius: 4px;
+    padding: 0.5em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    grid-template-areas:
+      " sender   sender   sender"
+      "  sent    amount     to"
+      "receiver receiver receiver"
+    ;
+
+    .sender, .receiver {
+      display: flex;
+      align-items: center;
+    }
+
+    .sender:after, .receiver:before {
+      content: attr(title);
+      font-size: 0.3em;
+      font-family: monospace;
+      color: var(--gray);
+      word-break: break-all;
+      display: inline-block;
+    }
+    .sender:after { margin-left: 0.5em }
+    .receiver:before { margin-right: 0.5em }
+
+    .amount {
+      text-align: center;
+      margin: 0.5em 0;
+    }
+
+    .sent { justify-self: start }
+    .to { justify-self: end }
+    .sent, .to {
+      font-size: 0.5em;
+      color: var(--gray);
+    }
+
+    .receiver {
+      text-align: right;
+    }
   }
 }

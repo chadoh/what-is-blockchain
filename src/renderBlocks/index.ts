@@ -1,5 +1,6 @@
 import "./blocks.scss"
 import { openBlock, closeBlock, animationLength } from "./animations"
+import formatEth from "./formatEth"
 
 document.addEventListener("click", e => {
   const target = e.target as HTMLElement
@@ -46,15 +47,19 @@ export default blocks => blocks.map(block => {
       <div class="block-back">
         <div class="inner" data-behavior="inner-height">
           <h2 class="blockNumber">${blockNumber}</h2>
+
+          <div>${block.transactions.length} transaction${block.transactions.length > 1 ? 's' : ''}</div>
           <div class="transactions">
             ${block.transactions.map((transaction, i) => {
-              const amount = parseInt(transaction.value, 16)
+              const amount = formatEth(parseInt(transaction.value, 16))
 
               return `
                 <div class="transaction">
-                  <div class="from">${transaction.from}</div> sent
-                  <div class="amount">${amount}</div> to
-                  <div class="to">${transaction.to}</div>
+                  <div class="sender" data-behavior="identicon" title="${transaction.from}"></div>
+                  <div class="sent">sent</div>
+                  <div class="amount">${amount}</div>
+                  <div class="to">to</div>
+                  <div class="receiver" data-behavior="identicon" title="${transaction.to}"></div>
                 </div>
               `
             }).join("")}
