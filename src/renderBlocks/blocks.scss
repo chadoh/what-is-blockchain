@@ -1,8 +1,23 @@
+.blockNumber:before {
+  content: 'block #';
+}
+
+.dateMined:before {
+  content: 'created ';
+}
+
+// block container, but also front of block
 .block {
   background-color: var(--blue);
   padding: 1em;
   position: relative;
   margin-bottom: 1em;
+
+  #opened-block & {
+    pointer-events: none;
+    user-select: none;
+    margin-bottom: 1.5em;
+  }
 
   &:before, &:after {
     position: absolute;
@@ -30,42 +45,42 @@
     visibility: hidden;
   }
 
-  header {
-    color: var(--gray);
-    display: flex;
-    font-size: 0.8em;
-  }
-
   h2 {
     margin: 0;
   }
 }
 
 .block-back {
+  border: 2px solid var(--teal);
   position: absolute;
   top: 0; bottom: 0; right: 0; left: 0;
   transform: rotateY(180deg) translateZ(1.5em);
   background-color: var(--blue);
   overflow: hidden;
+  padding: 1em;
+
   pointer-events: none;
   user-select: none;
-}
+  #opened-block & {
+    pointer-events: auto;
+    user-select: auto;
+  }
 
-.blockNumber:before {
-  content: 'block #';
-}
+  .inner {
+    width: calc(100vw - 2em);
+    #opened-block & {
+      width: 100%;
+    }
+  }
 
-.dateMined:before {
-  content: 'created ';
-}
+  .transactions {
+    display: grid;
+    grid-column-gap: 0.5em;
+    grid-row-gap: 0.5em;
+    grid-template-columns: repeat(auto-fill, minmax(7em, 1fr));
+  }
 
-.transactions {
-  display: grid;
-  grid-column-gap: 0.5em;
-  grid-row-gap: 0.5em;
-  grid-template-columns: repeat(auto-fill, minmax(7em, 1fr));
-}
-
-.transaction {
-  padding: 0.5em;
+  .transaction {
+    overflow: hidden;
+  }
 }

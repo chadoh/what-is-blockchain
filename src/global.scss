@@ -58,6 +58,7 @@ body {
   position: fixed;
   top: 0; left: 0;
   perspective: 1000em;
+  overflow: scroll;
 
   transform: translateZ(10em); /* prevents overlap in Safari */
 
@@ -66,8 +67,7 @@ body {
    */
   perspective-origin: 100% -700%;
 
-  display: none;
-  &.active { display: block; }
+  display: none; // shown with JS
 }
 
 h1 {
