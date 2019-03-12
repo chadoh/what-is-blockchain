@@ -1,9 +1,21 @@
-import exampleData from './exampleData';
+import { threeConsecutive, genesis } from './exampleData';
 
-test('should be an Array', () => {
-  expect(Array.isArray(exampleData)).toBe(true)
-})
+describe("threeConsecutive", () => {
+  test("should be an Array", () => {
+    expect(Array.isArray(threeConsecutive)).toBe(true)
+  })
 
-test('should have ten items', () => {
-  expect(exampleData.length).toBe(10)
+  test("should have three items", () => {
+    expect(threeConsecutive.length).toBe(3)
+  });
 });
+
+describe("genesis", () => {
+  test("should be an object", () => {
+    expect(Object.prototype.toString.call(genesis)).toBe("[object Object]")
+  })
+
+  test("should have block number 0", () => {
+    expect(genesis.number).toBe("0x0")
+  })
+})
