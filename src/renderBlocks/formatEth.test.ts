@@ -1,4 +1,4 @@
-import { formatRaw } from './formatEth';
+import formatEth from './formatEth';
 
 test.each`
   input       | output
@@ -7,5 +7,5 @@ test.each`
   ${1e18}     | ${"1"}
   ${2.187e17} | ${"0.219"}
 `("when given $input, returns $output", ({ input, output }) => {
-  expect(formatRaw(input)).toEqual(output)
+  expect(formatEth(input)).toEqual(output)
 });

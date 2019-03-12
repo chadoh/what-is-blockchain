@@ -1,4 +1,4 @@
-export function formatRaw(amountInWei: number): string {
+export default function formatEth(amountInWei: number): string {
   const options = {
     style: "decimal",
     minimumFractionDigits: 3
@@ -8,8 +8,4 @@ export function formatRaw(amountInWei: number): string {
   if (amountInWei % 1e18 === 0) options.minimumFractionDigits = 0
   const formatter = new Intl.NumberFormat("en-US", options)
   return formatter.format(amountInWei / 1e18)
-}
-
-export default function formatEth(n: number): string {
-  return `<abbr title="ETH">Ξ</abbr>${formatRaw(n)}`
 }

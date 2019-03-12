@@ -78,7 +78,7 @@
     display: grid;
     grid-column-gap: 0.5em;
     grid-row-gap: 0.5em;
-    grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(6em, 1fr));
   }
 
   .transaction {
@@ -119,15 +119,57 @@
     .receiver:before { margin-right: 0.5em }
 
     .amount {
+      border: 1px solid var(--teal);
       text-align: center;
-      margin: 0.5em 0;
+      border-radius: 10em;
+      padding: 0.25em 0.5em;
+
+      // &:after {
+      //   content: "ether";
+      //   display: block;
+      //   font-size: 0.25em;
+      //   line-height: .7;
+      //   color: var(--gray);
+      // }
+      // &:before {
+      //   content: "Ξ";
+      //   font-size: 0.5em;
+      //   color: var(--gray);
+      //   vertical-align: super;
+      //   margin-top: 0.25em;
+      // }
     }
 
-    .sent { justify-self: start }
-    .to { justify-self: end }
     .sent, .to {
-      font-size: 0.5em;
-      color: var(--gray);
+      text-indent: -3000em;
+    }
+    .sent {
+      border-bottom: 1px solid var(--teal);
+      border-left: 1px solid var(--teal);
+      position: relative;
+      top: -0.6em;
+      width: 63%;
+      justify-self: end;
+    }
+    .to {
+      border-top: 1px solid var(--teal);
+      border-right: 1px solid var(--teal);
+      position: relative;
+      bottom: -0.5em;
+      width: 63%;
+      height: 50%;
+
+      &:after {
+        content: ' ';
+        display: block;
+        width: 0;
+        height: 0;
+        border: 5px solid transparent;
+        border-top: 10px solid var(--teal);
+        position: absolute;
+        bottom: -7px;
+        right: -5px;
+      }
     }
 
     .receiver {
