@@ -1,4 +1,3 @@
-import "./blocks.scss"
 import { openBlock, closeBlock, animationLength } from "./animations"
 import formatEth from "./formatEth"
 
