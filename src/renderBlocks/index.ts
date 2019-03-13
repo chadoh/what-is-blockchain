@@ -8,6 +8,10 @@ document.addEventListener("click", e => {
     e.preventDefault()
     openBlock(target.closest(".block") as HTMLElement)
   }
+  if (target.getAttribute("href") === "#close-block") {
+    e.preventDefault()
+    closeBlock(target.closest(".block") as HTMLElement)
+  }
 })
 
 let closedAt = new Date().getTime()
@@ -46,7 +50,10 @@ export default blocks => blocks.map(block => {
       </div>
       <div class="block-back">
         <div class="inner" data-behavior="inner-height">
-          <h2 class="blockNumber">${blockNumber}</h2>
+          <header>
+            <h2 class="blockNumber">${blockNumber}</h2>
+            <a href="#close-block">&times;</a>
+          </header>
 
           <div>${block.transactions.length} transaction${block.transactions.length > 1 ? 's' : ''}</div>
           <div class="transactions">
