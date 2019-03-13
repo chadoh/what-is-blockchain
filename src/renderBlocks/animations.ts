@@ -10,7 +10,7 @@ export const openBlock = (block: HTMLElement): void => {
     left: calc(${rect.left}px - 0.35em);
     width: ${block.offsetWidth}px;
     height: ${block.offsetHeight}px;
-    transform: perspective(1000em) rotateY(330deg) scaleX(1.1) translateZ(1em);
+    transform: rotateY(330deg) scaleX(1.1) translateZ(1em);
     transition: all ${animationLength}ms;
   `
   clone.style.cssText = clone.style.cssText + ";" + styles
@@ -43,7 +43,7 @@ export const openBlock = (block: HTMLElement): void => {
       left: 1em;
       width: calc(100vw - 2em);
       height: ${inner.getBoundingClientRect().height}px;
-      transform: perspective(40em) rotateY(180deg) translateZ(1em);
+      transform: rotateY(180deg) translateZ(1em);
     `
     clone.style.cssText = clone.style.cssText + ";" + styles
 
