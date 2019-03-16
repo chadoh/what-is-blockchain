@@ -23,7 +23,7 @@ body {
   }
 }
 
-#scene {
+main {
   display: grid;
   align-items: start;
   grid-column-gap: 1em;
@@ -63,8 +63,8 @@ body {
 
   transform: translateZ(10em); /* prevents overlap in Safari */
 
-  /* different from #scene in a hacky attempt to have the perspective look the
-   * same, despite #scene's greater height
+  /* different from main in a hacky attempt to have the perspective look the
+   * same, despite main's greater height
    */
   perspective-origin: 100% -700%;
 
@@ -85,7 +85,7 @@ h1 {
   transform: rotateY(30deg);
 }
 
-p {
+main p {
   margin-top: 0;
   background: var(--blue);
   padding: 0.25em;
@@ -119,20 +119,17 @@ p {
   position: relative;
   text-transform: uppercase;
 
-  *:nth-child(n+2) {
+  &:before, &:after, div:before, div:after {
+    content: attr(data-shadow);
     position: absolute;
     top: 0; left: 0;
+    pointer-events: none;
+    user-select: none;
   }
-
-  *:nth-child(2) { transform: translateZ(-0.2em); color: var(--red) }
-  *:nth-child(3) { transform: translateZ(-0.4em); color: var(--yellow) }
-  *:nth-child(4) { transform: translateZ(-0.6em); color: var(--teal) }
-  *:nth-child(5) { transform: translateZ(-0.8em); color: var(--pink) }
-}
-
-[aria-hidden="true"] {
-  pointer-events: none;
-  user-select: none;
+  &:before { transform: translateZ(-0.2em); color: var(--red) }
+  &:after { transform: translateZ(-0.4em); color: var(--yellow) }
+  div:before { transform: translateZ(-0.6em); color: var(--teal) }
+  div:after { transform: translateZ(-0.8em); color: var(--pink) }
 }
 
 #description {
