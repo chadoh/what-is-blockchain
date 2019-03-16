@@ -1,6 +1,6 @@
-# What is Blockchain?
+![What is Blockchain?](docs/thumbnail.png)
 
-Microsite explaining the basic concepts of Blockchain in a friendly way, and
+A microsite explaining the basic concepts of Blockchain in a friendly way, and
 allowing you to explore the most recent Ethereum blocks if you have a
 web3-enabled browser.
 
